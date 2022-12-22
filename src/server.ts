@@ -1,8 +1,8 @@
 import express from 'express';
-import http from 'http';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './library/Logging';
+import authorRoutes from './routers/Author';
 
 const router = express();
 
@@ -37,12 +37,15 @@ const StartServer = () => {
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
         if (req.method === 'OPTIONS') {
-            res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+            res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,PATCH');
             return res.status(200).json({});
         }
 
         next();
     });
+
+    /* Routes */
+    router.use('/authors', authorRoutes);
 
     /* Health check */
     router.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
