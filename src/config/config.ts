@@ -16,5 +16,3 @@ export const config = {
         port: SERVER_PORT
     }
 };
-
-//mongodb+srv://admin:POUdXxNTHLLjOz15@cluster1.jhwcd.mongodb.net/?retryWrites=true&w=majority
