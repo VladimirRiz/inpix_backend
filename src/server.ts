@@ -47,7 +47,7 @@ const StartServer = () => {
 
     /* Routes */
     router.use('/authors', authorRoutes);
-    router.use('/book', bookRoutes);
+    router.use('/books', bookRoutes);
 
     /* Health check */
     router.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
